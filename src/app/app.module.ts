@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/components/nav/nav.component';
+import { ModalCardComponent } from './shared/components/modal-card/modal-card.component';
 
 
 
@@ -13,6 +14,7 @@ import { NavComponent } from './shared/components/nav/nav.component';
   declarations: [
     AppComponent,
     NavComponent,
+    
   ],
   imports: [
     BrowserModule,

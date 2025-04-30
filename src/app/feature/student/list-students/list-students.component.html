@@ -1,4 +1,16 @@
 <div class="mx-auto p-6 bg-gray-900 min-h-screen text-gray-100">
+  <app-modal-card
+    [isOpen]="isModalOpen"
+    title="Add New Student"
+    submitButtonText="Save Student"
+    cancelButtonText="Cancel"
+    [showSubmitButton]="true"
+    (close)="closeModal()"
+    (submit)="handleStudentFormSubmit()"
+  >
+    <app-student-form (formSubmit)="handleStudentFormSubmit($event)"></app-student-form>
+  </app-modal-card>
+  
   <h2 class="text-2xl font-bold mb-6 text-gray-100">Student List</h2>
 
   <table class="student-table w-full border-separate border-spacing-0 rounded-xl overflow-hidden bg-gray-800 shadow-lg">
@@ -24,7 +36,7 @@
       <td class="py-3 px-4 border-t border-gray-700">{{ student.phoneNumber }}</td>
       <td class="py-3 px-4 border-t border-gray-700">{{ student.address }}</td>
       <td class="py-3 px-4 border-t border-gray-700 actions flex space-x-2">
-        <button  class="edit-btn bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded-md transition-colors duration-200 cursor-pointer">Edit</button>
+        <button  class="edit-btn bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded-md transition-colors duration-200 cursor-pointer" (click)="openModal()">Edit</button>
         <button (click)="delete(student.id)" class="delete-btn bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-md transition-colors duration-200 cursor-pointer">Delete</button>
       </td>
     </tr>

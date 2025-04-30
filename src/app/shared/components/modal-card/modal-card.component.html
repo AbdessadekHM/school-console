@@ -1,0 +1,47 @@
+<div
+  *ngIf="isOpen"
+  class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300"
+  [ngClass]="isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'"
+  (click)="onOverlayClick($event)"
+>
+  <div
+    class="bg-gray-800 rounded-lg shadow-xl p-6 w-full max-w-lg max-h-[80vh] overflow-y-auto transform transition-all duration-300"
+    [ngClass]="isOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <div class="flex justify-between items-center mb-4">
+      <h2 id="modal-title" class="text-xl font-bold text-white">{{ title }}</h2>
+      <button
+        type="button"
+        class="text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 rounded-full p-1"
+        (click)="onClose()"
+        aria-label="Close modal"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="text-white">
+      <ng-content></ng-content>
+    </div>
+    <div *ngIf="showSubmitButton" class="mt-6 flex justify-end space-x-3">
+      <button
+        type="button"
+        class="bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 transition duration-200"
+        (click)="onClose()"
+      >
+        {{ cancelButtonText }}
+      </button>
+      <button
+        type="button"
+        class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-200"
+        (click)="onSubmit()"
+      >
+        {{ submitButtonText }}
+      </button>
+    </div>
+  </div>
+</div>
