@@ -9,10 +9,7 @@ import { StudentModule } from './feature/student/student.module';
 import { ListStudentsComponent } from './feature/student/list-students/list-students.component';
 
 
-const routes: Routes = [
-  
-  {path: 'students', component: ListStudentsComponent},
-];
+
 
 
 @NgModule({
@@ -22,10 +19,11 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
+    
     
   ],
-  exports: [RouterModule],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

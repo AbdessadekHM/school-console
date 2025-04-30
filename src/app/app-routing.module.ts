@@ -5,7 +5,7 @@ import { StudentModule } from './feature/student/student.module';
 
 const routes: Routes = [
   
-  {path: 'students', component: StudentModule},
+  {path: 'students', loadChildren: () => import('./feature/student/student.module').then(m => m.StudentModule)},
 ];
 
 @NgModule({
