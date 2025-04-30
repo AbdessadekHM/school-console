@@ -3,7 +3,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'app-modal-card',
   templateUrl: './modal-card.component.html',
-  styleUrls: ['./modal-card.component.css']
 })
 export class ModalCardComponent {
   @Input() isOpen: boolean = false;

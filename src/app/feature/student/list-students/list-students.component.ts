@@ -1,18 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from "../../../core/services/student.service";
-import { Student } from '../../../core/models/student.module';
+import {Student} from '../../../core/models/student.module';
 
 @Component({
   selector: 'app-list-students',
   templateUrl: './list-students.component.html',
   standalone: false,
 })
-export class ListStudentsComponent implements OnInit{
-  
+export class ListStudentsComponent implements OnInit {
+
 
   students!: Student[];
   isEditing: boolean = false;
   isModalOpen: boolean = false;
+  currentStudent: Student | null = null;
 
   constructor(private studentService: StudentService) {
   }
@@ -29,10 +30,10 @@ export class ListStudentsComponent implements OnInit{
     this.isEditing = true;
 //    this.studentService.setStudentToEdit(student);
   }
+
   closeEditForm() {
     this.isEditing = false;
   }
-
 
 
   openModal() {
@@ -44,10 +45,15 @@ export class ListStudentsComponent implements OnInit{
   }
 
   handleStudentFormSubmit(formData?: any) {
+    console.log('Form data received:', formData);
     if (formData) {
       console.log('Student form submitted:', formData);
       this.closeModal();
     }
   }
 
+  editStudent(student: Student) {
+    this.currentStudent = student;
+    this.openModal();
+  }
 }
