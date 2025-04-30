@@ -1,1 +1,41 @@
-<p>list-students works!</p>
+<div class="mx-auto p-6 bg-gray-900 min-h-screen text-gray-100">
+  <h2 class="text-2xl font-bold mb-6 text-gray-100">Student List</h2>
+
+  <table class="student-table w-full border-separate border-spacing-0 rounded-xl overflow-hidden bg-gray-800 shadow-lg">
+    <thead>
+    <tr class="bg-gray-700 text-gray-300">
+      <th class="py-3 px-4 text-left font-medium">ID</th>
+      <th class="py-3 px-4 text-left font-medium">Name</th>
+      <th class="py-3 px-4 text-left font-medium">Age</th>
+      <th class="py-3 px-4 text-left font-medium">Grade</th>
+      <th class="py-3 px-4 text-left font-medium">Email</th>
+      <th class="py-3 px-4 text-left font-medium">Phone</th>
+      <th class="py-3 px-4 text-left font-medium">Address</th>
+      <th class="py-3 px-4 text-left font-medium">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students" class="hover:bg-gray-700 transition-colors duration-200">
+      <td class="py-3 px-4 border-t border-gray-700">{{ student.id }}</td>
+      <td class="py-3 px-4 border-t border-gray-700">{{ student.name }}</td>
+      <td class="py-3 px-4 border-t border-gray-700">{{ student.age }}</td>
+      <td class="py-3 px-4 border-t border-gray-700">{{ student.grade }}</td>
+      <td class="py-3 px-4 border-t border-gray-700">{{ student.email }}</td>
+      <td class="py-3 px-4 border-t border-gray-700">{{ student.phoneNumber }}</td>
+      <td class="py-3 px-4 border-t border-gray-700">{{ student.address }}</td>
+      <td class="py-3 px-4 border-t border-gray-700 actions flex space-x-2">
+        <button  class="edit-btn bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded-md transition-colors duration-200 cursor-pointer">Edit</button>
+        <button (click)="delete(student.id)" class="delete-btn bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-md transition-colors duration-200 cursor-pointer">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="students.length === 0" class="no-students text-center py-10 text-gray-400 text-lg">
+    No students found
+  </div>
+
+  <div class="add-btn-container mt-6 flex justify-end">
+    <button class="add-btn bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white px-6 py-2 rounded-md transition-all duration-200 shadow-md hover:shadow-lg">Add New Student</button>
+  </div>
+</div>
